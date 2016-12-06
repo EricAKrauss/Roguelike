@@ -13,8 +13,8 @@ class Wilderness:
         self.height= height
         self.bkgType = bkgType
 
-        self.bkgTypes =    [TREE, '.']
-        self.borderTypes = ['.', '~']
+        self.bkgTypes =    [TREE, SPACE]
+        self.borderTypes = [SPACE,WATER]
         self.featureTypes= ['C', 'B']
         self.featList = []
         self.regionSize = 8
@@ -26,7 +26,7 @@ class Wilderness:
             self.defRegions()
         self.regToMaze()
         self.fillFeatures()
-        self.maze = self.package(self.maze)
+        self.maze = self.package(self.maze, 3)
         self.placeEntrance()
         self.maze = self.package(self.maze, 1, TREE)
 

@@ -90,4 +90,4 @@ class Cave(Level.Level):
         self.maze = GenLevel(self.inSeed, self.args[0], self.args[1], 3)
 
 levelTypes = [Tower, Sewer, Cave, Crypt, Wild]
-levelTypes = [Wild]
+##levelTypes = [Wild]

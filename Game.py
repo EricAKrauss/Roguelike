@@ -63,6 +63,9 @@ def gameLoopStart(gameState):
 class Game:
     def __init__(self):
         print("Game Initiate")
+        
+        self.gameVersion = VERSION
+        print("Game Version: "+VERSION)
         self.MessageHandler = Messages()
         self.MessageHandler.push("Game Start")
 
@@ -75,7 +78,7 @@ class Game:
         level = self.levelList.getLevel()
         array = level.CollisionMap
 
-        self.xConst = 44
+        self.xConst = 25
         self.yConst = 75
     
         self.console = initTDL(self.xConst, self.yConst, self.levelList.getLevel())
@@ -92,7 +95,7 @@ class Game:
         self.turn = 1
         
         self.thePlayer.name = UI_Poll_String(self.console, "Character Name: ")
-        if os.path.isfile("Saves/"+self.thePlayer.name+".sv"):
+        if os.path.isfile("Saves/"+self.thePlayer.name+"_World.sv"):
             if UI_Poll_Yes_or_No(self.console, "Would you like to load this character?"):
                 self.loadRequest = True
                 return
@@ -289,7 +292,11 @@ class Game:
         return True
 
 
-game = Game()
-if game.loadRequest == True:
-    game = load(game)
-gameLoopStart(game)
+if __name__ == "__main__":
+    game = Game()
+    if game.loadRequest == True:
+        game = load(game)
+
+    if game.gameVersion != VERSION:
+        print("Loaded save from an old version\n  BEWARE BUGS!")
+    gameLoopStart(game)

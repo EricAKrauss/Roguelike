@@ -15,14 +15,8 @@ from Player_Classes import *
 from MessageSys import *
 ##from LevelManager import *
 
-def initTDL(height, width, level):
-    viewArea = level.getPlayerViewArea(1.5)
-    r1 = viewArea[0]
-    c1 = viewArea[1]
-    r2 = viewArea[2]
-    c2 = viewArea[3]
-
-    console = tdl.init(c2-c1+width, r2-r1+height, "RogueLike")
+def initTDL(width, height, level):
+    console = tdl.init(width, height, "RogueLike")
     
     tdl.set_fps(0)
     ##tdl.set_fullscreen(True)

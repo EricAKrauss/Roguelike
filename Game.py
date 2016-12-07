@@ -25,6 +25,7 @@ from QuadrantTheory import ArrayToString
 
 def save(gameState):
     print("Saving file")
+    self.MessageHandler.push("Saving file")
     file = open("Saves/"+gameState.thePlayer.getName()+"_World.sv", "w+b")
     fileB= open("Saves/"+gameState.thePlayer.getName()+"_Player.sv", "w+b")
     pickle.dump(gameState, file, 4)
@@ -78,18 +79,12 @@ class Game:
         level = self.levelList.getLevel()
         array = level.CollisionMap
 
-        self.xConst = 25
-        self.yConst = 75
+        self.xConst = 100
+        self.yConst = 47
     
         self.console = initTDL(self.xConst, self.yConst, self.levelList.getLevel())
 
-        viewArea = level.getPlayerViewArea(1.5)
-        r1 = viewArea[0]
-        c1 = viewArea[1]
-        r2 = viewArea[2]
-        c2 = viewArea[3]
         self.height= 25
-        ##self.width = max(c2-c1, 23)
         self.width = 35
 
         self.turn = 1
@@ -112,7 +107,7 @@ class Game:
                 message = message[:-len(cls)]
                 message += "or "+cls+"?"
         
-        classString = self.getStringFromStrings(message, ClassList)
+        classString = self.getStringFromStrings(message, Classes)
         if classString == "EXIT":
             return self.killConsole()
         self.thePlayer.setClass(Classes[classString])

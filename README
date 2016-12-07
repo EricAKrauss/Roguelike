@@ -1,0 +1,45 @@
+INSTALLATION:
+	1. Download and unpack directory
+	2. Install Python 3.4 or higher
+		2a. Python 3.x should work but Pip must be installed
+	3. Open up the command prompt / terminal
+		3a. execute the following command:
+			pip install tdl
+	4. Run Game.py
+	
+	
+Playing the Game:
+	1. Choose a player name
+		1a. Choosing a saved name
+			will give you the option
+			of loading that save
+	2. Choose a class
+	3. You are now in the navigation state
+	
+	'w', 'a', 's', 'd' player movement
+	
+	'm' opens the map
+		'q' closes the map
+		
+	'v' opens the "view" mode
+		'f' attacks a target in range
+		pressing a skill number will
+		use that skill
+		
+	'f' in the navigation mode
+		attacks a previously
+		attacked target
+		
+	'c' opens the character equipment menu
+	
+	'i' opens the inventory
+	
+	'k' opens the skills menu
+	
+	'#' pressing a skill number will use that skill
+	
+	'q' closes any open menus
+	
+	'S' Saves the Game
+	
+	'L' Loads the Game

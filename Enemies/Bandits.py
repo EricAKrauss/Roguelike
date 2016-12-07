@@ -5,32 +5,35 @@ from Enemy import *
 import Enemies.Enemies
 
 from random import randrange as rand
-    
-class Goblin_Grunt(Enemy):
+
+class Bandit_Knight(Enemy):
     def onSpawn(self):
-        self.name = "Goblin Grunt"
-        self.cowardice = 0.33
-        self.sightDist = 9
+        self.name = "Bandit Knight"
+        self.cowardice = 0.0
+        self.sightDist = 8
 
     def deriveStats(self):
-        self.healthMax = 4 + self.level*int(self.level/3)
+        self.healthMax = 6 + self.level*int(self.level/2)
         self.health = min(self.health, self.healthMax)
-        self.power = int(self.level*max(1, self.level/4))
+        self.power = 1+int(self.level*max(1, self.level/3.5))
         self.deriveRange()
 
     def genEquipment(self):
         newItem = Longsword(self.level)
         self.equip(newItem)
 
+        newItem = Wooden_Shield(self.level)
+        self.equip(newItem)
+
         newItem = Leather_Shirt(self.level)
         self.equip(newItem)
 
-        newItem = Leather_Helm(self.level)
+        newItem = Iron_Helm(self.level)
         self.equip(newItem)
 
-class Goblin_Archer(Enemy):
+class Bandit_Archer(Enemy):
     def onSpawn(self):
-        self.name = "Goblin Archer"
+        self.name = "Bandit Archer"
         self.cowardice = 0.5
         self.sightDist = 10
 
@@ -52,21 +55,23 @@ class Goblin_Archer(Enemy):
         newItem = Cloth_Hat(self.level)
         self.equip(newItem)
 
-class Goblin_Berserker(Enemy):
+class Bandit_Lancer(Enemy):
     def onSpawn(self):
-        self.name = "Goblin Berserker"
-        self.cowardice = 0.0
-        self.sightDist = 8
-        self.hearingDist=7
+        self.name = "Bandit Lancer"
+        self.cowardice = 0.1
+        self.sightDist = 9
 
     def deriveStats(self):
-        self.healthMax = 6 + self.level*int(self.level/2)
+        self.healthMax = 4 + self.level*int(self.level/3)
         self.health = min(self.health, self.healthMax)
-        self.power = 1+int(self.level*max(1, self.level/3))
+        self.power = int(self.level*max(1, self.level/4))
         self.deriveRange()
 
     def genEquipment(self):
-        newItem = Greatsword(self.level)
+        newItem = Spear(self.level)
+        self.equip(newItem)
+
+        newItem = Buckler(self.level)
         self.equip(newItem)
 
         newItem = Leather_Shirt(self.level)
@@ -75,9 +80,9 @@ class Goblin_Berserker(Enemy):
         newItem = Leather_Helm(self.level)
         self.equip(newItem)
 
-class Goblin_Stonewall(Enemy):
+class Bandit_Stonewall(Enemy):
     def onSpawn(self):
-        self.name = "Goblin Stonewall"
+        self.name = "Bandit Stonewall"
         self.cowardice = 0.0
         self.sightDist = 6
 
@@ -100,9 +105,9 @@ class Goblin_Stonewall(Enemy):
         newItem = Iron_Helm(self.level)
         self.equip(newItem)
 
-class Goblin_Thief(Enemy):
+class Bandit_Thief(Enemy):
     def onSpawn(self):
-        self.name = "Goblin Thief"
+        self.name = "Bandit Thief"
         self.cowardice = 1.0
         self.sightDist = 9
         self.optionalTargets = [Item]
@@ -130,7 +135,7 @@ class Goblin_Thief(Enemy):
     def genGoals(self):
         return Enemies.Enemies.genItemGoals(self)
 
-enemyList = [Goblin_Berserker, Goblin_Archer, Goblin_Grunt, Goblin_Thief]
+enemyList = [Bandit_Lancer, Bandit_Archer, Bandit_Knight, Bandit_Thief]
 
-eliteList = [Goblin_Stonewall]
-##enemyList = [Goblin_Thief]
+eliteList = [Bandit_Stonewall]
+##enemyList = [Bandit_Thief]

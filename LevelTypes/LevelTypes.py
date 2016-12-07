@@ -7,6 +7,7 @@ from LevelTypes.Decorations import *
 import Enemies.Goblins
 import Enemies.Vermin
 import Enemies.Undead
+import Enemies.Bandits
 
 class Sewer(Level.Level):
     def onInit(self):
@@ -51,8 +52,8 @@ class Tower(Level.Level):
             random.randrange(3,5), ##Width
             random.randrange(3,5)  ##Height
             ]
-        self.enemyList = Enemies.Goblins.enemyList
-        self.eliteList = Enemies.Goblins.eliteList
+        self.enemyList = Enemies.Bandits.enemyList
+        self.eliteList = Enemies.Bandits.eliteList
         self.decorList = [Table, Weapon_Rack, Firepit]
         self.textSpace = "Dusty stone floor\n"
         self.textWall =  "Cracked stone wall\n"
@@ -65,8 +66,13 @@ class Wild(Level.Level):
             size,
             size
             ]
-        self.enemyList = Enemies.Goblins.enemyList
-        self.eliteList = Enemies.Goblins.eliteList
+        if rand(2) == 0:
+            self.enemyList = Enemies.Goblins.enemyList
+            self.eliteList = Enemies.Goblins.eliteList
+        else:
+            self.enemyList = Enemies.Bandits.enemyList
+            self.eliteList = Enemies.Bandits.eliteList
+            
         self.decorList = [Table, Firepit, Weapon_Rack]
         
         self.textSpace = "ground, covered in leaves\n"
@@ -90,4 +96,4 @@ class Cave(Level.Level):
         self.maze = GenLevel(self.inSeed, self.args[0], self.args[1], 3)
 
 levelTypes = [Tower, Sewer, Cave, Crypt, Wild]
-##levelTypes = [Wild]
+##levelTypes = [Tower]

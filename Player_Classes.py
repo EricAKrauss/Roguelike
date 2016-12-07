@@ -247,6 +247,6 @@ class Trickster():
 
         self.skillLevels = baseSkillLevels
 
-ClassList = ["Mage", "Fighter", "Rogue", "Spellsword", "Fencer", "Trickster"]
+ClassList = ["Mage", "Fighter", "Rogue"]
 Classes = {"Mage":Mage, "Fighter":Fighter, "Rogue":Rogue,
            "Spellsword":Spellsword, "Fencer":Fencer, "Trickster":Trickster}
